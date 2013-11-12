@@ -1,5 +1,5 @@
 # Statflix.rb
-A small Ruby script to aggregate your Netflix Recently Watched (RW) history. I've always wondered why Netflix didn't include a personal "account statistics" section, but this was my attempt at rolling my own.
+A small Ruby script to aggregate your Netflix Recently Watched (RW) history. I've always wondered why Netflix didn't include a personal "account statistics" section, but this was my first attempt at rolling my own.
 
 ### How to use
 Just put your Netflix email and password into the appropriate fields and then run `ruby statflix.rb`. The script will print out everything that you've watched today and add together the sum of the time spent watching.
