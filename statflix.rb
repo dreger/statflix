@@ -10,7 +10,7 @@ class Log
   end
 end
 
-def getData
+def get_data
   # Put your Netflix email and password here:
   # And please, for the love of all things security, don't publish
   # this file with the following two fields filled in :)
@@ -72,4 +72,5 @@ def getData
   puts "\nYou watched #{total_shows_watched} shows for a total of #{total_time_watched.round(2)} hours today."
 end
 
-getData
+# Call the method
+get_data
