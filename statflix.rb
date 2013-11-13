@@ -34,9 +34,9 @@ def get_data
   result = JSON.parse(json_file)
 
   # Uncomment to have each show printed out in the Terminal
-  result['viewedItems'].each{ |i|
-    puts "#{i['duration']}\t#{i['date']}\t#{i['title']}"
-  }
+  # result['viewedItems'].each{ |i|
+  #   puts "#{i['duration']}\t#{i['date']}\t#{i['title']}"
+  # }
 
   # Store each item into an object and put that into an array
   entries = []
@@ -58,15 +58,15 @@ def get_data
   total_shows_watched = 0
 
   puts "Shows watched today:"
-  entries.each { |x|
-    if x.date == todays_date
-      total_shows_watched = total_shows_watched + 1
-      total_time_watched = total_time_watched + x.hours
 
-      #Show the title of each show
-      puts "=> #{x.title}"
-    end
-  }
+  # Thanks to reddit.com/user/banderash for help cleaning up the logic here
+  shows_watched_today = entries.select { |entry| entry.date == todays_date }
+  shows_watched_today.each do |x|
+    puts "- #{x.title}"
+  end
+
+  total_shows_watched = shows_watched_today.size
+  total_time_watched = shows_watched_today.inject(0) {|sum, entry| sum + entry.hours}
 
   # Print data
   puts "\nYou watched #{total_shows_watched} shows for a total of #{total_time_watched.round(2)} hours today."
