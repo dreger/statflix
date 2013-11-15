@@ -16,6 +16,3 @@ Personally, I wrote this script as a way to generate a report that I will then s
 
 ### Contributions
 Pull requests are welcome.
-
-### Issues
-- Timezones: I could use some help figuring out how to handle timezones since it determines what "today" means. 
