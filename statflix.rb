@@ -31,7 +31,7 @@ def get_data
 
   # Grab the JSON file of your Recently Watched history
   json_file = a.get(json_url).body
-  result = JSON.parse(json_file)
+  results = JSON.parse(json_file)
 
   # Uncomment to have each show printed out in the Terminal
   # result['viewedItems'].each{ |i|
