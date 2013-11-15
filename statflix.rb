@@ -45,12 +45,6 @@ def get_data
               Log.new(item['title'], hours, item['dateStr'])
             end
 
-
-  # Get and format current date to compare against each entry's date
-  
-  total_time_watched = 0
-  total_shows_watched = 0
-
   puts "Shows watched today:"
 
   # Thanks to reddit.com/user/banderash for help cleaning up the logic here
