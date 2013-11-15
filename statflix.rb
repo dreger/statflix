@@ -42,13 +42,13 @@ def get_data
   # Store the title, hours and date in an array.
   entries = results['viewedItems'].map do |item|
               hours = (item['bookmark'].to_f / 60 / 60 ).round(2)
-              Log.new(item['title'], hours, item['dateStr'])
+              Log.new(item['title'], hours, item['date'])
             end
 
   puts "Shows watched today:"
 
   # Thanks to reddit.com/user/banderash for help cleaning up the logic here
-  
+
   # Take the date in the entry and set it to the local time then compare.
   shows_watched_today = entries.select{ |entry| Time.parse(entry.date).getlocal.to_date == Date.today }
   shows_watched_today.each do |x|
