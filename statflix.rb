@@ -1,5 +1,6 @@
 require 'mechanize'
 require 'json'
+require 'time'
 
 class Log
   attr_accessor :title, :hours, :date
@@ -31,7 +32,7 @@ def get_data
 
   # Grab the JSON file of your Recently Watched history
   json_file = a.get(json_url).body
-  result = JSON.parse(json_file)
+  results = JSON.parse(json_file)
 
   # Uncomment to have each show printed out in the Terminal
   # result['viewedItems'].each{ |i|
@@ -46,15 +47,16 @@ def get_data
 
 
   # Get and format current date to compare against each entry's date
-  todays_date = Time.new.strftime("%m/%d/%y")
-
+  
   total_time_watched = 0
   total_shows_watched = 0
 
   puts "Shows watched today:"
 
   # Thanks to reddit.com/user/banderash for help cleaning up the logic here
-  shows_watched_today = entries.select { |entry| entry.date == todays_date }
+  
+  # Take the date in the entry and set it to the local time then compare.
+  shows_watched_today = entries.select{ |entry| Time.parse(entry.date).getlocal.to_date == Date.today }
   shows_watched_today.each do |x|
     puts "- #{x.title}"
   end
