@@ -38,18 +38,12 @@ def get_data
   #   puts "#{i['duration']}\t#{i['date']}\t#{i['title']}"
   # }
 
-  # Store each item into an object and put that into an array
-  entries = []
-  result['viewedItems'].each{ |i|
-    # Note that 'bookmark' is the time you've watched, whereas 'duration' is
-    # the total time of the entity. Returned value is in seconds.
-    minutes = i['bookmark'].to_f / 60
-    hours = minutes / 60
-    title = i['title']
-    date = i['dateStr']
+  # Store the title, hours and date in an array.
+  entries = results['viewedItems'].map do |item|
+              hours = (item['bookmark'].to_f / 60 / 60 ).round(2)
+              Log.new(item['title'], hours, item['dateStr'])
+            end
 
-    entries << Log.new(title, hours.round(2), date)
-  }
 
   # Get and format current date to compare against each entry's date
   todays_date = Time.new.strftime("%m/%d/%y")
